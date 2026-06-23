@@ -628,36 +628,73 @@
   });
 
   async function uploadPhoto(file, fileName) {
-    if (!file) return null;
+    if (!file) {
+        console.log('❌ Tidak ada file');
+        return null;
+    }
+    
+    // Validasi ukuran (max 2MB)
+    if (file.size > 2 * 1024 * 1024) {
+        uploadStatus.textContent = '❌ File terlalu besar (max 2MB)';
+        uploadStatus.style.color = '#dc2626';
+        return null;
+    }
+    
+    // Validasi tipe
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    if (!allowedTypes.includes(file.type)) {
+        uploadStatus.textContent = '❌ Format tidak didukung (JPG/PNG/GIF/WEBP)';
+        uploadStatus.style.color = '#dc2626';
+        return null;
+    }
     
     try {
-      uploadStatus.textContent = '⏳ Uploading...';
-      uploadStatus.style.color = '#2563eb';
-      
-      const { data, error } = await supabase.storage
-        .from('couriers')
-        .upload(fileName, file, {
-          cacheControl: '3600',
-          upsert: true
-        });
-      
-      if (error) throw error;
-      
-      const { data: urlData } = supabase.storage
-        .from('couriers')
-        .getPublicUrl(fileName);
-      
-      uploadStatus.textContent = '✅ Foto berhasil diupload!';
-      uploadStatus.style.color = '#22C55E';
-      
-      return urlData.publicUrl;
+        uploadStatus.textContent = '⏳ Uploading...';
+        uploadStatus.style.color = '#2563eb';
+        
+        console.log('📤 Mulai upload:', fileName);
+        console.log('📦 File size:', (file.size / 1024).toFixed(1), 'KB');
+        console.log('📁 File type:', file.type);
+        
+        // UPLOAD KE SUPABASE STORAGE
+        const { data, error } = await supabase.storage
+            .from('couriers')  // NAMA BUCKET HARUS 'couriers'
+            .upload(fileName, file, {
+                cacheControl: '3600',
+                upsert: true,
+                contentType: file.type
+            });
+        
+        if (error) {
+            console.error('❌ Upload error detail:', error);
+            console.error('❌ Error message:', error.message);
+            console.error('❌ Error status:', error.status);
+            
+            uploadStatus.textContent = '❌ ' + error.message;
+            uploadStatus.style.color = '#dc2626';
+            return null;
+        }
+        
+        console.log('✅ Upload success:', data);
+        
+        // Dapatkan public URL
+        const { data: urlData } = supabase.storage
+            .from('couriers')
+            .getPublicUrl(fileName);
+        
+        console.log('🔗 Public URL:', urlData.publicUrl);
+        
+        uploadStatus.textContent = '✅ Foto berhasil diupload!';
+        uploadStatus.style.color = '#22C55E';
+        
+        return urlData.publicUrl;
     } catch (error) {
-      console.error('Upload error:', error);
-      uploadStatus.textContent = '❌ Gagal upload foto: ' + error.message;
-      uploadStatus.style.color = '#dc2626';
-      return null;
+        console.error('❌ Upload error:', error);
+        uploadStatus.textContent = '❌ Gagal upload: ' + (error.message || 'Unknown error');
+        uploadStatus.style.color = '#dc2626';
+        return null;
     }
-  }
+}
 
   async function deleteOldPhoto(photoURL) {
     if (!photoURL) return;
