@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>KurirCepat · Delivery Area Bakalan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { 
+      background: #f8fafc; 
+      color: #0b1b2b; 
+      padding-bottom: 80px;
+      position: relative;
+      min-height: 100vh;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><text x="50%" y="50%" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="%2322C55E" opacity="0.06" text-anchor="middle" dominant-baseline="central">DELIVERY AREA BAKALAN</text></svg>'),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><text x="50%" y="50%" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="%2322C55E" opacity="0.05" text-anchor="middle" dominant-baseline="central">BAKALAN</text></svg>');
+      background-repeat: repeat, repeat;
+      background-size: 400px 200px, 300px 150px;
+      background-position: 0 0, 50px 30px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, rgba(11,27,43,0.92) 0%, rgba(34,197,94,0.85) 100%),
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300"><text x="50%" y="50%" font-family="Arial, sans-serif" font-size="42" font-weight="900" fill="white" opacity="0.15" text-anchor="middle" dominant-baseline="central">DELIVERY AREA BAKALAN</text><text x="50%" y="70%" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="white" opacity="0.10" text-anchor="middle" dominant-baseline="central">BAKALAN &amp; SURROUNDING AREA</text></svg>');
+      background-size: cover, 100% 100%;
+      background-position: center, center;
+      border-radius: 0 0 40px 40px;
+      padding: 40px 20px 50px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to top, #f8fafc, transparent);
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+    }
+    
+    .hero-content .logo-hero {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 4px;
+    }
+    
+    .hero-content .logo-hero i {
+      color: #22C55E;
+      background: white;
+      padding: 8px;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      margin-right: 10px;
+    }
+    
+    .hero-content .tagline {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-weight: 300;
+      margin-top: 4px;
+    }
+    
+    .hero-content .delivery-area {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      padding: 10px 28px;
+      border-radius: 60px;
+      margin-top: 16px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      letter-spacing: 1px;
+    }
+    
+    .hero-content .delivery-area i {
+      margin-right: 8px;
+      color: #22C55E;
+    }
+    
+    .container { 
+      max-width: 1280px; 
+      margin: 0 auto; 
+      padding: 0 18px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .header { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 18px 0; 
+      flex-wrap: wrap; 
+      position: relative;
+      z-index: 5;
+    }
+    
+    .header .logo { 
+      font-weight: 700; 
+      font-size: 1.8rem; 
+      color: white; 
+      letter-spacing: -0.5px; 
+      text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    .header .logo i { color: #22C55E; margin-right: 6px; background: white; padding: 4px 6px; border-radius: 8px; }
+    
+    .admin-badge { 
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      padding: 8px 18px; 
+      border-radius: 40px; 
+      font-size: 0.85rem; 
+      font-weight: 600; 
+      cursor: pointer; 
+      transition: 0.2s; 
+      color: white;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .admin-badge:hover { background: rgba(255,255,255,0.25); }
+    .admin-badge i { margin-right: 6px; color: #22C55E; }
+    .admin-badge.logged-in { background: #22C55E; color: white; border-color: #22C55E; }
+    .admin-badge.logged-in i { color: white; }
+    
+    .search-section { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 12px; 
+      margin: 16px 0 24px; 
+      align-items: center; 
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+      padding: 16px 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .search-box { 
+      flex: 2; 
+      min-width: 200px; 
+      display: flex; 
+      align-items: center; 
+      background: white; 
+      border-radius: 60px; 
+      padding: 0 18px; 
+      border: 1px solid #e9edf2; 
+    }
+    .search-box i { color: #8896a8; font-size: 1rem; margin-right: 10px; }
+    .search-box input { border: none; padding: 14px 0; width: 100%; font-size: 1rem; background: transparent; outline: none; }
+    .filter-group { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-btn { 
+      background: white; 
+      border: 1px solid #e0e6ed; 
+      padding: 10px 20px; 
+      border-radius: 40px; 
+      font-weight: 500; 
+      font-size: 0.9rem; 
+      color: #2c3e50; 
+      cursor: pointer; 
+      transition: all 0.2s; 
+    }
+    .filter-btn.active { background: #22C55E; border-color: #22C55E; color: white; }
+    .filter-btn i { margin-right: 6px; }
+    
+    .courier-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+      gap: 24px; 
+      margin: 28px 0; 
+    }
+    .card { 
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(4px);
+      border-radius: 20px; 
+      padding: 20px 16px 18px; 
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06); 
+      transition: all 0.25s; 
+      border: 1px solid rgba(255,255,255,0.3);
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      text-align: center; 
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(34,197,94,0.12); }
+    .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; background: #e9edf2; border: 3px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 12px; }
+    .card h3 { font-size: 1.25rem; font-weight: 600; margin: 6px 0 2px; }
+    .phone { color: #5b6f84; font-size: 0.9rem; margin-bottom: 6px; }
+    .status-badge { display: inline-block; padding: 4px 14px; border-radius: 30px; font-size: 0.8rem; font-weight: 600; margin: 6px 0 14px; background: #eef2f6; color: #2c3e50; }
+    .status-badge.online { background: #dcfce7; color: #15803d; }
+    .status-badge.offline { background: #fee2e2; color: #b91c1c; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none; padding: 12px 20px; border-radius: 40px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; text-decoration: none; width: 100%; }
+    .btn-wa { background: #22C55E; color: white; }
+    .btn-wa:hover { background: #16a34a; transform: scale(0.97); }
+    .btn-wa:disabled { opacity: 0.5; pointer-events: none; }
+    
+    .bottom-nav { 
+      display: none; 
+      position: fixed; 
+      bottom: 0; 
+      left: 0; 
+      width: 100%; 
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid #e9edf2; 
+      padding: 8px 0; 
+      justify-content: space-around; 
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.04); 
+      z-index: 20; 
+    }
+    .bottom-nav a { display: flex; flex-direction: column; align-items: center; color: #6b7a8f; font-size: 0.7rem; text-decoration: none; padding: 4px 12px; border-radius: 30px; transition: 0.2s; }
+    .bottom-nav a i { font-size: 1.6rem; margin-bottom: 2px; }
+    .bottom-nav a.active { color: #22C55E; }
+    
+    .fab { 
+      position: fixed; 
+      bottom: 100px; 
+      right: 24px; 
+      background: #22C55E; 
+      color: white; 
+      width: 60px; 
+      height: 60px; 
+      border-radius: 30px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-size: 2rem; 
+      box-shadow: 0 8px 32px rgba(34,197,94,0.4); 
+      border: none; 
+      cursor: pointer; 
+      transition: 0.25s; 
+      z-index: 15; 
+    }
+    .fab:hover { transform: scale(1.05); background: #16a34a; }
+    
+    .footer { 
+      text-align: center; 
+      padding: 28px 0 16px; 
+      font-size: 0.9rem; 
+      color: #6b7a8f; 
+      border-top: 1px solid rgba(233,237,242,0.5); 
+      margin-top: 20px; 
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(4px);
+      border-radius: 20px 20px 0 0;
+    }
+    
+    .admin-panel { 
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-radius: 24px; 
+      padding: 20px; 
+      margin: 24px 0; 
+      box-shadow: 0 8px 32px rgba(0,0,0,0.04); 
+      border: 1px solid rgba(255,255,255,0.3); 
+      display: none; 
+    }
+    .admin-panel h2 { font-size: 1.4rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+    .admin-panel .btn-add { background: #0b1b2b; color: white; padding: 12px 24px; border-radius: 60px; border: none; font-weight: 600; margin-bottom: 16px; cursor: pointer; transition: 0.2s; }
+    .admin-panel .btn-add:hover { background: #1a2e44; transform: scale(0.98); }
+    .admin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 16px; }
+    .admin-card { background: rgba(249,251,253,0.8); padding: 14px; border-radius: 16px; border: 1px solid #eef2f6; display: flex; flex-direction: column; gap: 6px; }
+    .admin-card img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+    .admin-actions { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+    .admin-actions button { background: white; border: 1px solid #dce2ea; padding: 6px 14px; border-radius: 30px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .admin-actions button:hover { transform: scale(0.95); }
+    .admin-actions .edit { color: #2563eb; }
+    .admin-actions .del { color: #dc2626; }
+    .admin-actions .toggle { color: #22C55E; }
+    
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); backdrop-filter: blur(4px); align-items: center; justify-content: center; z-index: 99; padding: 20px; }
+    .modal-card { background: white; max-width: 520px; width: 100%; border-radius: 32px; padding: 28px 22px; box-shadow: 0 32px 64px rgba(0,0,0,0.2); animation: fadeUp 0.25s; max-height: 90vh; overflow-y: auto; }
+    @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+    .modal-card h3 { margin-bottom: 16px; }
+    .modal-card label { font-weight: 500; font-size: 0.9rem; display: block; margin: 12px 0 4px; }
+    .modal-card input, .modal-card select { width: 100%; padding: 12px 16px; border-radius: 60px; border: 1px solid #dce2ea; font-size: 1rem; }
+    .modal-card input[type="file"] { padding: 10px; border: 2px dashed #dce2ea; border-radius: 16px; cursor: pointer; }
+    .modal-card input[type="file"]:hover { border-color: #22C55E; }
+    
+    .photo-preview {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 8px auto;
+      display: block;
+      border: 3px solid #eef2f6;
+      background: #f8fafc;
+    }
+    .photo-preview.hidden { display: none; }
+    .upload-info { font-size: 0.8rem; color: #6b7a8f; text-align: center; margin-top: 4px; }
+    .upload-info i { margin-right: 4px; }
+    
+    .modal-card .btn-submit { 
+      background: #22C55E; 
+      color: white; 
+      border: none; 
+      padding: 14px; 
+      border-radius: 60px; 
+      font-weight: 700; 
+      margin-top: 16px; 
+      width: 100%; 
+      cursor: pointer; 
+      transition: 0.2s; 
+      position: relative;
+    }
+    .modal-card .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .modal-card .btn-submit:hover:not(:disabled) { background: #16a34a; }
+    .modal-card .btn-close { 
+      background: #eef2f6; 
+      border: none; 
+      padding: 10px; 
+      border-radius: 60px; 
+      margin-top: 8px; 
+      width: 100%; 
+      cursor: pointer; 
+      font-weight: 600;
+    }
+    .modal-card .btn-close:hover { background: #e2e8f0; }
+    
+    .spinner { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    
+    .login-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); align-items: center; justify-content: center; z-index: 100; padding: 20px; }
+    .login-card { background: white; max-width: 400px; width: 100%; border-radius: 32px; padding: 36px 28px; box-shadow: 0 32px 64px rgba(0,0,0,0.2); animation: fadeUp 0.3s; }
+    .login-card h2 { text-align: center; margin-bottom: 4px; }
+    .login-card h2 i { color: #22C55E; }
+    .login-card .sub { text-align: center; color: #6b7a8f; margin-bottom: 24px; font-size: 0.9rem; }
+    .login-card label { font-weight: 500; font-size: 0.9rem; display: block; margin: 12px 0 4px; }
+    .login-card input { width: 100%; padding: 14px 18px; border-radius: 60px; border: 1px solid #dce2ea; font-size: 1rem; transition: 0.2s; }
+    .login-card input:focus { outline: none; border-color: #22C55E; box-shadow: 0 0 0 3px rgba(34,197,94,0.1); }
+    .login-card .btn-login { background: #22C55E; color: white; border: none; padding: 14px; border-radius: 60px; font-weight: 700; margin-top: 20px; width: 100%; cursor: pointer; transition: 0.2s; font-size: 1rem; }
+    .login-card .btn-login:hover { background: #16a34a; transform: scale(0.98); }
+    .login-card .btn-login:disabled { opacity: 0.6; cursor: not-allowed; }
+    .login-card .error-msg { color: #dc2626; font-size: 0.85rem; text-align: center; margin-top: 12px; display: none; }
+    .login-card .error-msg i { margin-right: 6px; }
+    .login-card .btn-close-login { background: #eef2f6; border: none; padding: 10px; border-radius: 60px; margin-top: 8px; width: 100%; cursor: pointer; font-weight: 600; }
+    .login-card .btn-close-login:hover { background: #e2e8f0; }
+    
+    @media (max-width: 768px) { 
+      .bottom-nav { display: flex; } 
+      .hero { padding: 20px 16px 40px; border-radius: 0 0 24px 24px; }
+      .hero-content .logo-hero { font-size: 2rem; }
+      .hero-content .delivery-area { font-size: 0.9rem; padding: 8px 20px; }
+      .header .logo { font-size: 1.4rem; }
+      .search-section { flex-direction: column; align-items: stretch; padding: 14px 16px; } 
+      .filter-group { justify-content: center; } 
+      .courier-grid { grid-template-columns: 1fr; } 
+      .fab { bottom: 90px; right: 16px; width: 54px; height: 54px; font-size: 1.6rem; } 
+      .admin-grid { grid-template-columns: 1fr; } 
+      .login-card { padding: 28px 20px; }
+      .modal-card { padding: 20px 16px; }
+      body::before {
+        background-size: 200px 100px, 150px 75px;
+      }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) { .courier-grid { grid-template-columns: repeat(2,1fr); } }
+    
+    .text-muted { color: #6b7a8f; }
+    .flex { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .hidden { display: none !important; }
+    .mt-2 { margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <header class="header">
+      <div class="logo"><i class="fas fa-truck"></i> KurirCepat</div>
+      <div class="admin-badge" id="adminBadge">
+        <i class="fas fa-user-shield"></i> <span id="adminBadgeText">Admin</span>
+      </div>
+    </header>
+    <div class="hero-content">
+      <div class="logo-hero">
+        <i class="fas fa-truck-fast"></i> KurirCepat
+      </div>
+      <p class="tagline">Layanan kurir terpercaya untuk kebutuhan Anda</p>
+      <div class="delivery-area">
+        <i class="fas fa-map-marker-alt"></i> DELIVERY AREA BAKALAN & SURROUNDING
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="search-section">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Cari kurir..." autocomplete="off">
+    </div>
+    <div class="filter-group">
+      <button class="filter-btn active" data-filter="all"><i class="fas fa-list"></i> Semua</button>
+      <button class="filter-btn" data-filter="online"><i class="fas fa-circle" style="color:#22C55E;"></i> Online</button>
+      <button class="filter-btn" data-filter="offline"><i class="fas fa-circle" style="color:#b91c1c;"></i> Offline</button>
+    </div>
+  </div>
+
+  <div id="courierGrid" class="courier-grid">
+    <div class="skeleton" style="height:280px; border-radius:20px;"></div>
+    <div class="skeleton" style="height:280px; border-radius:20px;"></div>
+    <div class="skeleton" style="height:280px; border-radius:20px;"></div>
+  </div>
+
+  <div id="adminPanel" class="admin-panel">
+    <h2><i class="fas fa-user-cog" style="color:#22C55E;"></i> Dashboard Admin</h2>
+    <button class="btn-add" id="openAddModal"><i class="fas fa-plus"></i> Tambah Kurir</button>
+    <div id="adminList" class="admin-grid"></div>
+  </div>
+
+  <div class="footer">
+    <p><i class="fas fa-truck-fast"></i> KurirCepat &mdash; Delivery Area Bakalan & Surrounding</p>
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <a href="#" class="active"><i class="fas fa-home"></i> Beranda</a>
+  <a href="#" id="navKurir"><i class="fas fa-truck"></i> Kurir</a>
+  <a href="#"><i class="fas fa-info-circle"></i> Tentang</a>
+</div>
+
+<button class="fab" id="fabWA"><i class="fab fa-whatsapp"></i></button>
+
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-card">
+    <h2><i class="fas fa-user-shield"></i> Login Admin</h2>
+    <p class="sub">Masukkan username dan password untuk mengelola kurir</p>
+    <form id="loginForm">
+      <label>Username</label>
+      <input type="text" id="loginUsername" placeholder="admin" required autocomplete="off">
+      <label>Password</label>
+      <input type="password" id="loginPassword" placeholder="••••••••" required>
+      <div class="error-msg" id="loginError"><i class="fas fa-exclamation-circle"></i> Username atau password salah</div>
+      <button type="submit" class="btn-login" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Masuk</button>
+      <button type="button" class="btn-close-login" id="closeLogin">Batal</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-card">
+    <h3 id="modalTitle">Tambah Kurir</h3>
+    <form id="courierForm">
+      <input type="hidden" id="editId">
+      <input type="hidden" id="existingPhotoUrl">
+      
+      <label>Nama Lengkap</label>
+      <input type="text" id="formName" placeholder="Nama kurir" required>
+      
+      <label>Nomor WhatsApp</label>
+      <input type="text" id="formPhone" placeholder="08123456789" required>
+      
+      <label>Foto Profil</label>
+      <img id="photoPreview" class="photo-preview hidden" alt="Preview foto">
+      <input type="file" id="formPhotoFile" accept="image/*">
+      <div class="upload-info"><i class="fas fa-info-circle"></i> Upload foto (max 2MB, format JPG/PNG)</div>
+      <div id="uploadStatus" style="font-size:0.85rem; color:#6b7a8f; margin-top:4px;"></div>
+      
+      <label>Status</label>
+      <select id="formStatus"><option value="online">Online</option><option value="offline">Offline</option></select>
+      
+      <button type="submit" class="btn-submit" id="formSubmitBtn"><i class="fas fa-save"></i> Simpan</button>
+      <button type="button" class="btn-close" id="closeModal">Batal</button>
+    </form>
+  </div>
+</div>
+
+<!-- Supabase SDK -->
+<script type="module">
+  // ===== KONFIGURASI SUPABASE ANDA (SUDAH TERISI) =====
+  const SUPABASE_URL = 'https://qhuzrskmeeffuxseksuj.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFodXpyc2ttZWVmZnV4c2Vrc3VqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyMTY0ODAsImV4cCI6MjA5Nzc5MjQ4MH0.Y68nGoMVpGPZIlGKvyDC6VI9CFocG5xAZioV5YKV8hc';
+
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+  
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // ===== KREDENSIAL ADMIN =====
+  const ADMIN_CREDENTIALS = {
+    username: 'admin',
+    password: 'kurir123'
+  };
+
+  // State
+  let allCouriers = [];
+  let currentFilter = 'all';
+  let searchTerm = '';
+  let isAdmin = false;
+  let isUploading = false;
+
+  // DOM refs
+  const grid = document.getElementById('courierGrid');
+  const adminPanel = document.getElementById('adminPanel');
+  const adminList = document.getElementById('adminList');
+  const searchInput = document.getElementById('searchInput');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalTitle = document.getElementById('modalTitle');
+  const form = document.getElementById('courierForm');
+  const editId = document.getElementById('editId');
+  const existingPhotoUrl = document.getElementById('existingPhotoUrl');
+  const formName = document.getElementById('formName');
+  const formPhone = document.getElementById('formPhone');
+  const formPhotoFile = document.getElementById('formPhotoFile');
+  const photoPreview = document.getElementById('photoPreview');
+  const uploadStatus = document.getElementById('uploadStatus');
+  const formStatus = document.getElementById('formStatus');
+  const formSubmitBtn = document.getElementById('formSubmitBtn');
+  const openAddBtn = document.getElementById('openAddModal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const adminBadge = document.getElementById('adminBadge');
+  const adminBadgeText = document.getElementById('adminBadgeText');
+  
+  const loginOverlay = document.getElementById('loginOverlay');
+  const loginForm = document.getElementById('loginForm');
+  const loginUsername = document.getElementById('loginUsername');
+  const loginPassword = document.getElementById('loginPassword');
+  const loginBtn = document.getElementById('loginBtn');
+  const loginError = document.getElementById('loginError');
+  const closeLoginBtn = document.getElementById('closeLogin');
+
+  // ============ LOGIN / LOGOUT ============
+  function login(username, password) {
+    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+      isAdmin = true;
+      adminPanel.style.display = 'block';
+      adminBadge.classList.add('logged-in');
+      adminBadgeText.textContent = 'Logout';
+      loginOverlay.style.display = 'none';
+      renderAdmin();
+      return true;
+    }
+    return false;
+  }
+
+  function logout() {
+    isAdmin = false;
+    adminPanel.style.display = 'none';
+    adminBadge.classList.remove('logged-in');
+    adminBadgeText.textContent = 'Admin';
+  }
+
+  adminBadge.addEventListener('click', () => {
+    if (isAdmin) {
+      if (confirm('Yakin ingin logout?')) {
+        logout();
+      }
+    } else {
+      loginOverlay.style.display = 'flex';
+      loginError.style.display = 'none';
+      loginUsername.value = '';
+      loginPassword.value = '';
+      loginUsername.focus();
+    }
+  });
+
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    loginBtn.disabled = true;
+    loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+    loginError.style.display = 'none';
+    
+    const success = login(loginUsername.value.trim(), loginPassword.value);
+    
+    if (!success) {
+      loginError.style.display = 'block';
+      loginPassword.value = '';
+      loginPassword.focus();
+    }
+    
+    loginBtn.disabled = false;
+    loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Masuk';
+  });
+
+  closeLoginBtn.addEventListener('click', () => {
+    loginOverlay.style.display = 'none';
+  });
+  
+  loginOverlay.addEventListener('click', (e) => {
+    if (e.target === loginOverlay) loginOverlay.style.display = 'none';
+  });
+
+  // ============ UPLOAD FOTO ============
+  formPhotoFile.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        photoPreview.src = event.target.result;
+        photoPreview.classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
+      uploadStatus.textContent = `📷 ${file.name} (${(file.size/1024).toFixed(1)} KB)`;
+      uploadStatus.style.color = '#22C55E';
+    } else {
+      photoPreview.classList.add('hidden');
+      uploadStatus.textContent = '';
+    }
+  });
+
+  async function uploadPhoto(file, fileName) {
+    if (!file) return null;
+    
+    try {
+      uploadStatus.textContent = '⏳ Uploading...';
+      uploadStatus.style.color = '#2563eb';
+      
+      const { data, error } = await supabase.storage
+        .from('couriers')
+        .upload(fileName, file, {
+          cacheControl: '3600',
+          upsert: true
+        });
+      
+      if (error) throw error;
+      
+      const { data: urlData } = supabase.storage
+        .from('couriers')
+        .getPublicUrl(fileName);
+      
+      uploadStatus.textContent = '✅ Foto berhasil diupload!';
+      uploadStatus.style.color = '#22C55E';
+      
+      return urlData.publicUrl;
+    } catch (error) {
+      console.error('Upload error:', error);
+      uploadStatus.textContent = '❌ Gagal upload foto: ' + error.message;
+      uploadStatus.style.color = '#dc2626';
+      return null;
+    }
+  }
+
+  async function deleteOldPhoto(photoURL) {
+    if (!photoURL) return;
+    try {
+      const fileName = photoURL.split('/').pop().split('?')[0];
+      if (fileName) {
+        await supabase.storage.from('couriers').remove([fileName]);
+      }
+    } catch (error) {
+      console.log('Gagal hapus foto lama:', error);
+    }
+  }
+
+  // ============ CRUD ============
+  async function fetchCouriers() {
+    try {
+      const { data, error } = await supabase
+        .from('couriers')
+        .select('*')
+        .order('created_at', { ascending: false });
+      
+      if (error) throw error;
+      return data || [];
+    } catch (error) {
+      console.error('Error fetching couriers:', error);
+      return [];
+    }
+  }
+
+  async function addCourier(data) {
+    try {
+      const { data: result, error } = await supabase
+        .from('couriers')
+        .insert([data])
+        .select();
+      
+      if (error) throw error;
+      return result[0];
+    } catch (error) {
+      console.error('Error adding courier:', error);
+      throw error;
+    }
+  }
+
+  async function updateCourier(id, data) {
+    try {
+      const { data: result, error } = await supabase
+        .from('couriers')
+        .update(data)
+        .eq('id', id)
+        .select();
+      
+      if (error) throw error;
+      return result[0];
+    } catch (error) {
+      console.error('Error updating courier:', error);
+      throw error;
+    }
+  }
+
+  async function deleteCourier(id) {
+    try {
+      const { error } = await supabase
+        .from('couriers')
+        .delete()
+        .eq('id', id);
+      
+      if (error) throw error;
+    } catch (error) {
+      console.error('Error deleting courier:', error);
+      throw error;
+    }
+  }
+
+  // ============ REALTIME ============
+  const channel = supabase
+    .channel('couriers_changes')
+    .on(
+      'postgres_changes',
+      {
+        event: '*',
+        schema: 'public',
+        table: 'couriers'
+      },
+      async () => {
+        allCouriers = await fetchCouriers();
+        renderCouriers();
+        if (isAdmin) renderAdmin();
+      }
+    )
+    .subscribe();
+
+  // ============ RENDER ============
+  async function loadData() {
+    allCouriers = await fetchCouriers();
+    renderCouriers();
+    if (isAdmin) renderAdmin();
+  }
+
+  function renderCouriers() {
+    let filtered = allCouriers.filter(c => {
+      const matchName = c.name?.toLowerCase().includes(searchTerm.toLowerCase()) || false;
+      const matchStatus = currentFilter === 'all' || c.status === currentFilter;
+      return matchName && matchStatus;
+    });
+    if (filtered.length === 0) {
+      grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#6b7a8f;"><i class="fas fa-truck fa-3x" style="opacity:0.3;"></i><p style="margin-top:12px;">Tidak ada kurir ditemukan</p></div>`;
+      return;
+    }
+    grid.innerHTML = filtered.map(c => `
+      <div class="card">
+        <img src="${c.photo_url || 'https://ui-avatars.com/api/?name='+encodeURIComponent(c.name||'Kurir')+'&background=22C55E&color=fff&size=96'}" alt="${c.name}" class="avatar" loading="lazy">
+        <h3>${c.name || 'Kurir'}</h3>
+        <div class="phone"><i class="fab fa-whatsapp" style="color:#22C55E;"></i> ${c.phone || '-'}</div>
+        <span class="status-badge ${c.status === 'online' ? 'online' : 'offline'}"><i class="fas fa-circle" style="font-size:0.6rem; margin-right:4px;"></i> ${c.status === 'online' ? 'Online' : 'Offline'}</span>
+        <a href="${c.status === 'online' ? `https://wa.me/${c.phone?.replace(/[^0-9]/g,'') || ''}?text=Saya%20ingin%20memesan%20kurir` : '#'}" target="_blank" class="btn btn-wa" ${c.status !== 'online' ? 'disabled' : ''}>
+          ${c.status === 'online' ? '<i class="fab fa-whatsapp"></i> Pesan Sekarang' : 'Kurir Sedang Offline'}
+        </a>
+      </div>
+    `).join('');
+  }
+
+  function renderAdmin() {
+    if (!isAdmin) return;
+    adminList.innerHTML = allCouriers.map(c => `
+      <div class="admin-card">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <img src="${c.photo_url || 'https://ui-avatars.com/api/?name='+encodeURIComponent(c.name||'Kurir')+'&background=22C55E&color=fff&size=56'}" alt="${c.name}">
+          <div><strong>${c.name}</strong><br><span class="text-muted" style="font-size:0.8rem;">${c.phone}</span></div>
+        </div>
+        <div class="admin-actions">
+          <button class="edit" data-id="${c.id}"><i class="fas fa-edit"></i> Edit</button>
+          <button class="del" data-id="${c.id}"><i class="fas fa-trash"></i> Hapus</button>
+          <button class="toggle" data-id="${c.id}"><i class="fas fa-sync"></i> ${c.status === 'online' ? 'Offline' : 'Online'}</button>
+        </div>
+      </div>
+    `).join('');
+    
+    document.querySelectorAll('.admin-card .edit').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = parseInt(btn.dataset.id);
+        const courier = allCouriers.find(c => c.id === id);
+        if (courier) openModal(courier);
+      });
+    });
+    document.querySelectorAll('.admin-card .del').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const id = parseInt(btn.dataset.id);
+        if (confirm('Yakin hapus kurir ini?')) {
+          const courier = allCouriers.find(c => c.id === id);
+          if (courier?.photo_url) {
+            await deleteOldPhoto(courier.photo_url);
+          }
+          await deleteCourier(id);
+        }
+      });
+    });
+    document.querySelectorAll('.admin-card .toggle').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const id = parseInt(btn.dataset.id);
+        const courier = allCouriers.find(c => c.id === id);
+        if (courier) {
+          const newStatus = courier.status === 'online' ? 'offline' : 'online';
+          await updateCourier(id, { status: newStatus });
+        }
+      });
+    });
+  }
+
+  // ============ MODAL ============
+  function openModal(courier = null) {
+    if (!isAdmin) {
+      alert('Silakan login sebagai admin terlebih dahulu');
+      return;
+    }
+    
+    form.reset();
+    photoPreview.classList.add('hidden');
+    uploadStatus.textContent = '';
+    formPhotoFile.value = '';
+    existingPhotoUrl.value = '';
+    
+    modalOverlay.style.display = 'flex';
+    
+    if (courier) {
+      modalTitle.textContent = 'Edit Kurir';
+      formSubmitBtn.textContent = 'Update';
+      editId.value = courier.id;
+      formName.value = courier.name || '';
+      formPhone.value = courier.phone || '';
+      formStatus.value = courier.status || 'online';
+      existingPhotoUrl.value = courier.photo_url || '';
+      
+      if (courier.photo_url) {
+        photoPreview.src = courier.photo_url;
+        photoPreview.classList.remove('hidden');
+        uploadStatus.textContent = '📷 Foto saat ini';
+        uploadStatus.style.color = '#6b7a8f';
+      }
+    } else {
+      modalTitle.textContent = 'Tambah Kurir';
+      formSubmitBtn.textContent = 'Simpan';
+      editId.value = '';
+      formName.value = '';
+      formPhone.value = '';
+      formStatus.value = 'online';
+    }
+  }
+  
+  function closeModal() { 
+    modalOverlay.style.display = 'none';
+    isUploading = false;
+  }
+  
+  openAddBtn.addEventListener('click', () => openModal());
+  closeModalBtn.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    if (!isAdmin) {
+      alert('Anda tidak memiliki akses admin');
+      return;
+    }
+    
+    if (isUploading) return;
+    
+    const id = editId.value ? parseInt(editId.value) : null;
+    const name = formName.value.trim();
+    const phone = formPhone.value.trim();
+    const status = formStatus.value;
+    const file = formPhotoFile.files[0];
+    const oldPhotoUrl = existingPhotoUrl.value;
+    
+    if (!name) { alert('Nama harus diisi'); return; }
+    if (!phone) { alert('Nomor WA harus diisi'); return; }
+    
+    formSubmitBtn.disabled = true;
+    formSubmitBtn.innerHTML = '<span class="spinner"></span> Memproses...';
+    
+    try {
+      let photoURL = oldPhotoUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=22C55E&color=fff&size=96`;
+      
+      if (file) {
+        if (oldPhotoUrl) {
+          await deleteOldPhoto(oldPhotoUrl);
+        }
+        
+        const fileName = `${Date.now()}_${file.name}`;
+        const uploadedUrl = await uploadPhoto(file, fileName);
+        if (uploadedUrl) {
+          photoURL = uploadedUrl;
+        } else if (!oldPhotoUrl) {
+          photoURL = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=22C55E&color=fff&size=96`;
+        }
+      }
+      
+      const data = {
+        name: name,
+        phone: phone,
+        photo_url: photoURL,
+        status: status,
+        updated_at: new Date().toISOString()
+      };
+      
+      if (id) {
+        await updateCourier(id, data);
+      } else {
+        data.created_at = new Date().toISOString();
+        await addCourier(data);
+      }
+      
+      closeModal();
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Terjadi kesalahan: ' + error.message);
+    } finally {
+      formSubmitBtn.disabled = false;
+      formSubmitBtn.innerHTML = '<i class="fas fa-save"></i> Simpan';
+    }
+  });
+
+  // ============ SEARCH & FILTER ============
+  searchInput.addEventListener('input', (e) => { searchTerm = e.target.value; renderCouriers(); });
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderCouriers();
+    });
+  });
+
+  // ============ FAB & NAV ============
+  document.getElementById('fabWA').addEventListener('click', () => {
+    window.open('https://wa.me/628123456789?text=Halo%20saya%20butuh%20bantuan%20kurir', '_blank');
+  });
+  document.getElementById('navKurir').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('courierGrid').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // ============ INIT ============
+  loadData();
+</script>
+</body>
+</html>
